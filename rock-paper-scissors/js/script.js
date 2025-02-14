@@ -79,5 +79,4 @@ score =JSON.parse(localStorage.getItem('score'));
      playRound(humanSelection, computerSelection);
  }
  playGame();
-
  localStorage.setItem('score', JSON.stringify(score));
