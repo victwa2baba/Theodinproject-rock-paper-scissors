@@ -13,7 +13,7 @@ const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
 let humanChoice =  '';
 
-score = JSON.parse(localStorage.getItem('score'));
+const getStorage = JSON.parse(localStorage.getItem('score'));
 
 resetBtn.addEventListener('click', () => {
     score = {
