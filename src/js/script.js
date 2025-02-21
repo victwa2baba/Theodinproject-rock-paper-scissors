@@ -108,7 +108,7 @@ let playGame = () => {
                 score: console.log(score)
             }
         } else if (humanChoice === "scissors" && computerChoice === "rock") {
-            score.humanScore++;
+            score.computerScore++;
             score.totalPlayed++;
             displayScore.innerHTML = `<span class="display-6">Your Score: ${score.humanScore}. Computer Score: ${score.computerScore}.
             Ties: ${score.tie}. Total Played: ${score.totalPlayed}</span>`;
@@ -148,7 +148,7 @@ let playGame = () => {
                 score: console.log(score)
             }
         } else if (humanChoice === "rock" && computerChoice === "paper") {
-            score.humanScore++;
+            score.computerScore++;
             score.totalPlayed++;
             displayScore.innerHTML = `<span class="display-6">Your Score: ${score.humanScore}. Computer Score: ${score.computerScore}.
             Ties: ${score.tie}. Total Played: ${score.totalPlayed}</span>`;
