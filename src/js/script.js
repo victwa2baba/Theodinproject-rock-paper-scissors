@@ -15,6 +15,8 @@ let humanChoice =  '';
 
 const getStorage = JSON.parse(localStorage.getItem('score'));
 
+const alertUser = alert('Please always Reset before you play for the first time.');
+
 resetBtn.addEventListener('click', () => {
     score = {
         humanScore: 0,
