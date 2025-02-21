@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping list example</title>
+    <style>
+      li {
+        margin-bottom: 10px;
+      }
+
+      li button {
+        font-size: 12px;
+        margin-left: 20px;
+        color: #666;
+      }
+    </style>
+  </head>
+  <body>
+
+    <h1>My shopping list</h1>
+
+    <div>
+      <label for="item">Enter a new item:</label>
+      <input type="text" name="item" id="item">
+      <button>Add item</button>
+    </div>
+
+    <ul>
+
+    </ul>
+
+    <script>
+      const ul = document.querySelector('ul');
+      const input = document.querySelector("#item");
+      const button = document.querySelector('button');
+
+      input.addEventListener('keydown', (e) => {
+        if (e.key === "Enter") {
+          let inputValue = input.value;
+        input.value = "";
+        
+        const createLi = document.createElement('li');
+        ul.appendChild(createLi);
+        const liSpan = document.createElement('span');
+        liSpan.textContent = inputValue;
+        const liButton = document.createElement('button');
+        liButton.textContent = 'Delete';
+     
+        liButton.addEventListener('click', function () {
+          ul.removeChild(createLi)
+        });
+     
+        createLi.appendChild(liSpan);
+        createLi.appendChild(liButton);
+        input.focus();
+        }
+      })
+      
+      button.addEventListener('click', () => {
+        let inputValue = input.value;
+        input.value = "";
+
+        const createLi = document.createElement('li');
+        ul.appendChild(createLi);
+        const liSpan = document.createElement('span');
+        liSpan.textContent = inputValue;
+        const liButton = document.createElement('button');
+        liButton.textContent = 'Delete';
+     
+        liButton.addEventListener('click', function () {
+          ul.removeChild(createLi)
+        });
+     
+        createLi.appendChild(liSpan);
+        createLi.appendChild(liButton);
+        input.focus();
+      });
+    </script>
+  </body>
+</html>
