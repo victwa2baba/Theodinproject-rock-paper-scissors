@@ -11,14 +11,24 @@ const resetBtn = document.querySelector('#reset');
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
+let humanChoice =  '';
 
 score = JSON.parse(localStorage.getItem('score'));
 
-
+resetBtn.addEventListener('click', () => {
+    score = {
+        humanScore: 0,
+        computerScore: 0,
+        tie: 0,
+        totalPlayed: 0
+    }
+    displayResult.textContent = 'Game Reset';
+    displayScore.textContent = '';
+})
 
 let reset = () => {
     if (score.totalPlayed === 5 && score.humanScore > score.computerScore) {
-            displayResult.innerHTML = `Final result: <br> Your score: ${score.humanScore}, Computer Score: ${score.computerScore}. You won the game.`; 
+            displayResult.innerHTML = `Final result: <br> You scored: ${score.humanScore}, Computer Scored: ${score.computerScore}. You won the game.`; 
             displayScore.textContent = '';
             console.log(`Your score: ${score.humanScore}, Computer Score: ${score.computerScore}. You won the game.`);
             score = {
@@ -28,7 +38,7 @@ let reset = () => {
                 totalPlayed: 0
             }
         } else if (score.totalPlayed === 5 && score.humanScore < score.computerScore) {
-            displayResult.innerHTML = `Final result: <br> Your Score: ${score.humanScore}, Computer Score: ${score.computerScore}. You lost the game. `;
+            displayResult.innerHTML = `Final result: <br> You Scored: ${score.humanScore}, Computer Scored: ${score.computerScore}. You lost the game. `;
             displayScore.textContent = '';
             console.log(`Your Score: ${score.humanScore}, Computer Score: ${score.computerScore}. You lost the game. `);
             score = {
@@ -38,7 +48,7 @@ let reset = () => {
                 totalPlayed: 0
             }
         } else if (score.totalPlayed === 5 && score.humanScore === score.computerScore) {
-            displayResult.innerHTML = `Final result: <br> Your Score: ${score.humanScore}, Computer Score: ${score.computerScore}. It's a tie.`;
+            displayResult.innerHTML = `Final result: <br> You Scored: ${score.humanScore}, Computer Scored: ${score.computerScore}. It's a tie.`;
             displayScore.textContent = '';
             console.log(`Your Score: ${score.humanScore}, Computer Score: ${score.computerScore}. It's a tie.`);
             score = {
@@ -66,7 +76,7 @@ let playGame = () => {
     
     
     let getHumanChoice = () => {
-        let humanChoice =  prompt("Please enter rock, paper, or scissors").toLowerCase(); 
+        
         if (humanChoice === "rock") {
             humanChoice = "rock";
             
@@ -79,8 +89,7 @@ let playGame = () => {
         } return humanChoice;
     } 
      
-    
-     let playRound = (humanChoice, computerChoice) => {
+    let playRound = (humanChoice, computerChoice) => {
         if (humanChoice === computerChoice) {
             score.tie++;
             score.totalPlayed++;
@@ -138,15 +147,31 @@ let playGame = () => {
      const computerSelection = getComputerChoice();
     
      playRound(humanSelection, computerSelection);
+    
 }
-playGame();
+
+rockBtn.addEventListener('click', () => {
+    humanChoice = 'rock';
+    playGame();
+    reset();
+})
+paperBtn.addEventListener('click', () => {
+    humanChoice = 'paper';
+    playGame();
+    reset();
+})
+scissorsBtn.addEventListener('click', () => {
+    humanChoice = 'scissors';
+    playGame();
+    reset();
+})
 //reset();
-/*score = {
+score = {
     humanScore: 0,
     computerScore: 0,
     tie: 0,
     totalPlayed: 0
-} */
+} 
 
    
  localStorage.setItem('score', JSON.stringify(score));
